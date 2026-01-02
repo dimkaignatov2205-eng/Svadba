@@ -4,176 +4,216 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Дмитрий & Юлия — Приглашение на свадьбу</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(to bottom, #fff5f7, #f9eef2);
-            color: #333;
-            line-height: 1.6;
-            padding: 0;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-        section {
-            text-align: center;
-            padding: 60px 20px;
-            background: #fff;
-            margin: 30px 0;
-            border-radius: 20px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.05);
-        }
-        h1 {
-            font-size: 2.8em;
-            color: #d4558c;
-            margin-bottom: 10px;
-            font-weight: 300;
-        }
-        h2 {
-            font-size: 1.8em;
-            color: #d4558c;
-            margin: 30px 0 20px;
-        }
-        p {
-            font-size: 1.2em;
-            margin: 15px 0;
-            color: #555;
-        }
-        .text-left {
-            text-align: left;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .couple-photo {
-            width: 100%;
-            max-width: 500px;
-            height: auto;
-            border-radius: 15px;
-            margin: 30px auto;
-            display: block;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        .btn {
-            display: inline-block;
-            margin: 20px 10px;
-            padding: 14px 36px;
-            background: #d4558c;
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1em;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-        .btn:hover {
-            background: #b93f75;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(212, 85, 140, 0.4);
-        }
-        .btn-secondary {
-            background: #f0d0e0;
-            color: #d4558c;
-        }
-        .btn-secondary:hover {
-            background: #e8b7c9;
-        }
-        .heart {
-            color: #d4558c;
-            animation: heartbeat 1.2s infinite;
-        }
-        @keyframes heartbeat {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
-        }
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin: 40px auto;
-            flex-wrap: wrap;
-        }
-        .countdown-item {
-            background: #f9e0e5;
-            padding: 20px;
-            border-radius: 15px;
-            min-width: 100px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-        }
-        .countdown-number {
-            font-size: 2.5em;
-            font-weight: bold;
-            color: #d4558c;
-        }
-        .countdown-label {
-            font-size: 0.9em;
-            color: #777;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .rsvp-form input, .rsvp-form textarea {
-            width: 100%;
-            max-width: 400px;
-            padding: 12px;
-            margin: 10px auto;
-            border: 2px solid #f0d0e0;
-            border-radius: 10px;
-            font-size: 1em;
-            display: block;
-        }
-        .rsvp-form button {
-            background: #d4558c;
-            color: white;
-            border: none;
-            padding: 14px 40px;
-            border-radius: 50px;
-            font-size: 1.1em;
-            cursor: pointer;
-            margin-top: 20px;
-            transition: background 0.3s;
-        }
-        .map-container {
-            margin: 30px auto;
-            max-width: 100%;
-            height: 350px;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        @media (max-width: 768px) {
-            h1 { font-size: 2.2em; }
-            h2 { font-size: 1.5em; }
-            .btn { padding: 12px 30px; font-size: 1em; }
-            .countdown-item { min-width: 80px; padding: 15px; }
-            .countdown-number { font-size: 2em; }
-        }
-        .toggle-btn {
-            padding: 14px;
-            background: #f0d0e0;
-            color: #d4558c;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.2s;
-            text-align: center;
-            font-weight: 600;
-        }
-        .toggle-btn.active {
-            background: #d4558c !important;
-            color: white !important;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(212, 85, 140, 0.3);
-        }
-    </style>
+   <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* оригинальный шрифт для всего текста */
+  background-color: #FFB6C1; /* сплошной нежно-розовый фон */
+  color: #333;
+  line-height: 1.6;
+  padding: 0;
+}
+
+/* Подключаем Playfair Display только для заголовков через CSS */
+h1, h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+section {
+  text-align: center;
+  padding: 60px 20px;
+  background: #fff;
+  margin: 30px 0;
+  border-radius: 20px;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+}
+
+h1 {
+  font-size: 2.8em;
+  color: #d4558c;
+  margin-bottom: 10px;
+  font-weight: 600; /* Playfair лучше смотрится с medium/bold */
+}
+
+h2 {
+  font-size: 1.8em;
+  color: #d4558c;
+  margin: 30px 0 20px;
+  font-weight: 600;
+}
+
+p {
+  font-size: 1.2em;
+  margin: 15px 0;
+  color: #555;
+}
+
+.text-left {
+  text-align: left;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.couple-photo {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 15px;
+  margin: 30px auto;
+  display: block;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.btn {
+  display: inline-block;
+  margin: 20px 10px;
+  padding: 14px 36px;
+  background: #d4558c;
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1em;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  /* Кнопки остаются на оригинальном шрифте (Segoe UI) */
+}
+
+.btn:hover {
+  background: #b93f75;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(212, 85, 140, 0.4);
+}
+
+.btn-secondary {
+  background: #f0d0e0;
+  color: #d4558c;
+}
+
+.btn-secondary:hover {
+  background: #e8b7c9;
+}
+
+.heart {
+  color: #d4558c;
+  animation: heartbeat 1.2s infinite;
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 40px auto;
+  flex-wrap: wrap;
+}
+
+.countdown-item {
+  background: #f9e0e5;
+  padding: 20px;
+  border-radius: 15px;
+  min-width: 100px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+.countdown-number {
+  font-size: 2.5em;
+  font-weight: bold;
+  color: #d4558c;
+  /* Оставляем числовой таймер на оригинальном шрифте */
+}
+
+.countdown-label {
+  font-size: 0.9em;
+  color: #777;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.rsvp-form input,
+.rsvp-form textarea,
+.rsvp-form button {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* форма — оригинальный шрифт */
+}
+
+.rsvp-form input,
+.rsvp-form textarea {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px;
+  margin: 10px auto;
+  border: 2px solid #f0d0e0;
+  border-radius: 10px;
+  font-size: 1em;
+  display: block;
+}
+
+.rsvp-form button {
+  background: #d4558c;
+  color: white;
+  border: none;
+  padding: 14px 40px;
+  border-radius: 50px;
+  font-size: 1.1em;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background 0.3s;
+}
+
+.map-container {
+  margin: 30px auto;
+  max-width: 100%;
+  height: 350px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 768px) {
+  h1 { font-size: 2.2em; }
+  h2 { font-size: 1.5em; }
+  .btn { padding: 12px 30px; font-size: 1em; }
+  .countdown-item { min-width: 80px; padding: 15px; }
+  .countdown-number { font-size: 2em; }
+}
+
+.toggle-btn {
+  padding: 14px;
+  background: #f0d0e0;
+  color: #d4558c;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+  font-weight: 600;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* переключатели — оригинальный шрифт */
+}
+
+.toggle-btn.active {
+  background: #d4558c !important;
+  color: white !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(212, 85, 140, 0.3);
+}
+</style>
 </head>
 <body>
     <div class="container">
@@ -368,4 +408,5 @@
     </script>
 </body>
 </html>
+
 
