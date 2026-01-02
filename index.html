@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Дмитрий & Юлия — Приглашение на свадьбу</title>
   <!-- Playfair Display для заголовков -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href=" https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap " rel="stylesheet">
   <!-- Font Awesome для иконок вместо эмодзи -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
@@ -17,16 +17,96 @@
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #FFB6C1; /* сплошной нежно-розовый фон */
+      background-color: #FFB6C1; /* фон сайта — виден вокруг письма */
       color: #333;
       line-height: 1.6;
       padding: 0;
+      overflow-x: hidden;
     }
 
     h1, h2 {
       font-family: 'Playfair Display', Georgia, serif;
     }
 
+    /* === Обложка-письмо как компактная карточка === */
+    .cover-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #FFB6C1;
+      z-index: 1000;
+      padding: 20px;
+    }
+
+    .cover {
+      background: #fff9f0; /* нежный пергамент */
+      border: 1px solid #e8d5c9;
+      border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+      padding: 40px 30px;
+      text-align: center;
+      max-width: 560px;
+      width: 90%;
+      position: relative;
+    }
+
+    .cover h1 {
+      font-size: 1.9em;
+      color: #8b4513;
+      margin-bottom: 24px;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .cover p {
+      font-size: 1.15em;
+      color: #5a3a2e;
+      font-style: italic;
+      margin-bottom: 40px;
+      line-height: 1.5;
+    }
+
+    .seal {
+      width: 70px;
+      height: 70px;
+      background: #d4558c;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      margin: 0 auto;
+      transition: transform 0.3s ease;
+    }
+
+    .seal:hover {
+      transform: scale(1.1);
+    }
+
+    .seal i {
+      color: white;
+      font-size: 1.8em;
+    }
+
+    /* === Основной контент (скрыт до открытия) === */
+    .main-content {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.8s ease, visibility 0.8s;
+    }
+
+    .main-content.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* === Основной сайт === */
     .container {
       max-width: 800px;
       margin: 0 auto;
@@ -195,6 +275,10 @@
     }
 
     @media (max-width: 768px) {
+      .cover { padding: 30px 20px; }
+      .cover h1 { font-size: 1.7em; }
+      .cover p { font-size: 1.05em; margin-bottom: 30px; }
+      .seal { width: 60px; height: 60px; }
       h1 { font-size: 2.2em; }
       h2 { font-size: 1.5em; }
       .btn { padding: 12px 30px; font-size: 1em; }
@@ -230,141 +314,178 @@
 </head>
 <body>
 
-<div class="container">
-  <!-- Главная секция -->
-  <section id="home">
-    <h1>Дмитрий <span class="heart"><i class="fas fa-heart"></i></span> Юлия</h1>
-    <p><strong>Дорогие родные и близкие!</strong><br>
-    Приглашаем вас разделить радость особенного для нас события и стать частью начала семейной истории.</p>
-    <img src="https://github.com/dimkaignatov2205-eng/Svadba/blob/main/DiAndJul.jpg?raw=true" alt="Дмитрий и Юлия" class="couple-photo">
-    <div class="countdown" id="countdown">
-      <div class="countdown-item">
-        <div class="countdown-number" id="days">00</div>
-        <div class="countdown-label">Дней</div>
-      </div>
-      <div class="countdown-item">
-        <div class="countdown-number" id="hours">00</div>
-        <div class="countdown-label">Часов</div>
-      </div>
-      <div class="countdown-item">
-        <div class="countdown-number" id="minutes">00</div>
-        <div class="countdown-label">Минут</div>
-      </div>
-      <div class="countdown-item">
-        <div class="countdown-number" id="seconds">00</div>
-        <div class="countdown-label">Секунд</div>
-      </div>
+<!-- Компактная обложка-письмо -->
+<div class="cover-wrapper" id="coverWrapper">
+  <div class="cover">
+    <h1>
+      Вам пришло приглашение на<br>
+      Свадьбу Дмитрия <i class="fas fa-heart" style="color:#d4558c; font-size:1em;"></i> Юлии
+    </h1>
+    <p>Откройте, чтобы узнать подробности...</p>
+    <div class="seal" id="openBtn">
+      <i class="fas fa-star"></i>
     </div>
-    <p><strong><i class="fas fa-calendar-day"></i> 25 июня 2026 года</strong><br>
-    <strong><i class="far fa-clock"></i> Начало в 15:00</strong><br>
-    <strong><i class="fas fa-map-marker-alt"></i> Парк-Отель Голицын Клуб</strong></p>
-    <a href="#rsvp" class="btn">Подтвердить участие</a>
-  </section>
+  </div>
+</div>
 
-  <!-- Подробности -->
-  <section id="details">
-    <h2><i class="fas fa-map-marker-alt"></i> Место проведения</h2>
-    <img src="https://github.com/dimkaignatov2205-eng/Svadba/blob/main/Karta.jpg?raw=true" alt="Карта проезда" class="couple-photo">
-    <p>Свадьба пройдёт в шатре <strong>"Дюна"</strong> на территории парка-отеля <strong>"Голицын Клуб"</strong>.<br>
-    <strong>Адрес:</strong> 143040, Московская область, Одинцовский район,<br>г. Голицыно, Минское шоссе, д. 45.</p>
-    <a href="https://xn--90adpidcmf4c0a9c.xn--p1ai/" target="_blank" class="btn">Перейти на сайт отеля</a>
-    <div class="map-container">
-      <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A71613d6d7832a15f2a600c5d0a5dc8c993d51ef415e9b6d0648091b27d928147&amp;source=constructor" width="100%" height="100%" frameborder="0"></iframe>
-    </div>
-    <a href="https://yandex.ru/maps/?mode=routes&rtext=~55.598717,36.959728&rtt=auto" target="_blank" class="btn btn-secondary">Построить маршрут</a>
-    <p><strong><i class="fas fa-car"></i> Парковка:</strong> Бесплатная на территории.</p>
-    <p><strong><i class="fas fa-bus"></i> Трансфер:</strong> По запросу.</p>
-  </section>
-
-  <!-- Дресс-код -->
-  <section id="dresscode">
-    <h2><i class="fas fa-user"></i> Dress code</h2>
-    <p>Будем рады, если вы поддержите цветовую гамму нашего торжества!</p>
-    <img src="https://github.com/dimkaignatov2205-eng/Svadba/blob/main/Dresscode.jpg?raw=true" alt="Дресс-код" class="couple-photo">
-  </section>
-
-  <!-- Программа дня -->
-  <section id="program">
-    <h2><i class="far fa-clock"></i> Тайминг мероприятия</h2>
-    <p><strong>Не опаздывайте — самое важное начнётся ровно в срок!</strong></p>
-    <div class="text-left">
-      <p>
-        <strong>15:00</strong> — Сбор гостей в зоне welcome.<br>
-        <strong>16:00</strong> — Выездная регистрация.<br>
-        <strong>17:00</strong> — Начало банкета.<br>
-        <strong>21:30</strong> — Подача торта.<br>
-        <strong>22:00</strong> — Дискотека.<br>
-        <strong>23:00</strong> — Завершение вечера.<br>
-      </p>
-    </div>
-  </section>
-
-  <!-- Подарки -->
-  <section id="gifts">
-    <h2><i class="fas fa-book"></i> Пожелание</h2>
-    <p>Цветы радуют мгновение, а книги остаются навсегда.<br>
-    Вместо букета мы будем счастливы получить вашу любимую книгу<br>
-    с тёплыми пожеланиями внутри.</p>
-  </section>
-
-  <!-- Творческие выступления -->
-  <section id="performance">
-    <h2><i class="fas fa-masks-theater"></i> Творческие подарки</h2>
-    <p>Мы будем рады вашим сюрпризам!<br>
-    Чтобы всё прошло идеально, пожалуйста, заранее свяжитесь с нашим ведущим:<br>
-    <strong>Карим Шарифуллин</strong> — <i class="fas fa-phone"></i> 79032748416 | <i class="fab fa-telegram"></i> TG @Karimsharifullin</p>
-    <p>Он включит вашу активность в программу.</p>
-  </section>
-
-  <!-- RSVP -->
-  <section id="rsvp">
-    <h2><i class="fas fa-envelope"></i> Подтвердите своё присутствие</h2>
-    <p>Пожалуйста, дайте нам знать до <strong>01.04.2026</strong>, будете ли вы с нами в этот день.<br>
-    Вы можете заполнить форму ниже — или просто позвонить / написать нам лично!</p>
-    <form class="rsvp-form" action="https://formsubmit.co/dimkaignatov@mail.ru" method="POST">
-      <input type="text" name="name" placeholder="Ваше имя и фамилия" required>
-      <p style="margin: 30px 0 15px; font-weight: 600; color: #555;">Будете ли вы на свадьбе?</p>
-      <div class="toggle-group" style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-        <label style="flex: 1; min-width: 180px; max-width: 250px;">
-          <input type="radio" name="attendance" value="Буду на свадьбе" style="display: none;">
-          <div class="toggle-btn">Буду на свадьбе</div>
-        </label>
-        <label style="flex: 1; min-width: 180px; max-width: 250px;">
-          <input type="radio" name="attendance" value="Не смогу присутствовать" style="display: none;">
-          <div class="toggle-btn">Не смогу присутствовать</div>
-        </label>
-      </div>
-      <div id="transport-section" style="display: none; margin-top: 30px;">
-        <p style="margin: 0 0 15px; font-weight: 600; color: #555;">Трансфер:</p>
-        <div class="toggle-group" style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-          <label style="flex: 1; min-width: 180px; max-width: 250px;">
-            <input type="radio" name="transport" value="Поеду сам" style="display: none;">
-            <div class="toggle-btn">Поеду сам</div>
-          </label>
-          <label style="flex: 1; min-width: 180px; max-width: 250px;">
-            <input type="radio" name="transport" value="Нужен трансфер туда и обратно" style="display: none;">
-            <div class="toggle-btn">Нужен трансфер</div>
-          </label>
+<!-- Основной контент -->
+<div class="main-content" id="mainContent">
+  <div class="container">
+    <!-- Главная секция -->
+    <section id="home">
+      <h1>Свадьба Дмитрия <i class="fas fa-heart heart"></i> Юлии</h1>
+      <p><strong>Дорогие родные и близкие!</strong><br>
+      Приглашаем вас разделить радость особенного для нас события и стать частью начала семейной истории.</p>
+      
+      <img src="https://github.com/dimkaignatov2205-eng/Svadba/blob/main/DiAndJul.jpg?raw=true" alt="Дмитрий и Юлия" class="couple-photo">
+      
+      <div class="countdown" id="countdown">
+        <div class="countdown-item">
+          <div class="countdown-number" id="days">00</div>
+          <div class="countdown-label">Дней</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="hours">00</div>
+          <div class="countdown-label">Часов</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="minutes">00</div>
+          <div class="countdown-label">Минут</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="seconds">00</div>
+          <div class="countdown-label">Секунд</div>
         </div>
       </div>
-      <button type="submit">Отправить</button>
-    </form>
-    <small>Данные отправляются напрямую нам — конфиденциально и безопасно.</small>
-  </section>
 
-  <!-- Финал -->
-  <div style="text-align: center; margin: 40px 0; font-style: italic; color: #777; max-width: 600px; margin-left: auto; margin-right: auto;">
-    Свадьба — это не про идеальное событие, а про тёплую встречу самых родных людей.<br>
-    Спасибо, что вы с нами!
+      <p>
+        <strong><i class="fas fa-calendar-day"></i> 25 июня 2026 года</strong><br>
+        <strong><i class="far fa-clock"></i> Начало в 15:00</strong><br>
+        <strong><i class="fas fa-map-marker-alt"></i> Парк-Отель Голицын Клуб</strong>
+      </p>
+      
+      <a href="#rsvp" class="btn">Подтвердить участие</a>
+    </section>
+
+    <!-- Подробности -->
+    <section id="details">
+      <h2><i class="fas fa-map-marker-alt"></i> Место проведения</h2>
+      <img src="https://github.com/dimkaignatov2205-eng/Svadba/blob/main/Karta.jpg?raw=true" alt="Карта проезда" class="couple-photo">
+      <p>Свадьба пройдёт в шатре <strong>"Дюна"</strong> на территории парка-отеля <strong>"Голицын Клуб"</strong>.<br>
+      <strong>Адрес:</strong> 143040, Московская область, Одинцовский район,<br>г. Голицыно, Минское шоссе, д. 45.</p>
+      <a href="https://xn--90adpidcmf4c0a9c.xn--p1ai/" target="_blank" class="btn">Перейти на сайт отеля</a>
+      <div class="map-container">
+        <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A71613d6d7832a15f2a600c5d0a5dc8c993d51ef415e9b6d0648091b27d928147&amp;source=constructor" width="100%" height="100%" frameborder="0"></iframe>
+      </div>
+      <a href="https://yandex.ru/maps/?mode=routes&rtext=~55.598717,36.959728&rtt=auto" target="_blank" class="btn btn-secondary">Построить маршрут</a>
+      <p><strong><i class="fas fa-car"></i> Парковка:</strong> Бесплатная на территории.</p>
+      <p><strong><i class="fas fa-bus"></i> Трансфер:</strong> По запросу.</p>
+    </section>
+
+    <!-- Дресс-код -->
+    <section id="dresscode">
+      <h2><i class="fas fa-user"></i> Dress code</h2>
+      <p>Будем рады, если вы поддержите цветовую гамму нашего торжества!</p>
+      <img src="https://github.com/dimkaignatov2205-eng/Svadba/blob/main/Dresscode.jpg?raw=true" alt="Дресс-код" class="couple-photo">
+    </section>
+
+    <!-- Программа дня -->
+    <section id="program">
+      <h2><i class="far fa-clock"></i> Тайминг мероприятия</h2>
+      <p><strong>Не опаздывайте — самое важное начнётся ровно в срок!</strong></p>
+      <div class="text-left">
+        <p>
+          <strong>15:00</strong> — Сбор гостей в зоне welcome.<br>
+          <strong>16:00</strong> — Выездная регистрация.<br>
+          <strong>17:00</strong> — Начало банкета.<br>
+          <strong>21:30</strong> — Подача торта.<br>
+          <strong>22:00</strong> — Дискотека.<br>
+          <strong>23:00</strong> — Завершение вечера.<br>
+        </p>
+      </div>
+    </section>
+
+    <!-- Подарки -->
+    <section id="gifts">
+      <h2><i class="fas fa-book"></i> Пожелание</h2>
+      <p>Цветы радуют мгновение, а книги остаются навсегда.<br>
+      Вместо букета мы будем счастливы получить вашу любимую книгу<br>
+      с тёплыми пожеланиями внутри.</p>
+    </section>
+
+    <!-- Творческие выступления -->
+    <section id="performance">
+      <h2><i class="fas fa-masks-theater"></i> Творческие подарки</h2>
+      <p>Мы будем рады вашим сюрпризам!<br>
+      Чтобы всё прошло идеально, пожалуйста, заранее свяжитесь с нашим ведущим:<br>
+      <strong>Карим Шарифуллин</strong> — <i class="fas fa-phone"></i> 79032748416 | <i class="fab fa-telegram"></i> TG @Karimsharifullin</p>
+      <p>Он включит вашу активность в программу.</p>
+    </section>
+
+    <!-- RSVP -->
+    <section id="rsvp">
+      <h2><i class="fas fa-envelope"></i> Подтвердите своё присутствие</h2>
+      <p>Пожалуйста, дайте нам знать до <strong>01.04.2026</strong>, будете ли вы с нами в этот день.<br>
+      Вы можете заполнить форму ниже — или просто позвонить / написать нам лично!</p>
+      <form class="rsvp-form" action="https://formsubmit.co/dimkaignatov@mail.ru" method="POST">
+        <input type="text" name="name" placeholder="Ваше имя и фамилия" required>
+        <p style="margin: 30px 0 15px; font-weight: 600; color: #555;">Будете ли вы на свадьбе?</p>
+        <div class="toggle-group" style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+          <label style="flex: 1; min-width: 180px; max-width: 250px;">
+            <input type="radio" name="attendance" value="Буду на свадьбе" style="display: none;">
+            <div class="toggle-btn">Буду на свадьбе</div>
+          </label>
+          <label style="flex: 1; min-width: 180px; max-width: 250px;">
+            <input type="radio" name="attendance" value="Не смогу присутствовать" style="display: none;">
+            <div class="toggle-btn">Не смогу присутствовать</div>
+          </label>
+        </div>
+        <div id="transport-section" style="display: none; margin-top: 30px;">
+          <p style="margin: 0 0 15px; font-weight: 600; color: #555;">Трансфер:</p>
+          <div class="toggle-group" style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+            <label style="flex: 1; min-width: 180px; max-width: 250px;">
+              <input type="radio" name="transport" value="Поеду сам" style="display: none;">
+              <div class="toggle-btn">Поеду сам</div>
+            </label>
+            <label style="flex: 1; min-width: 180px; max-width: 250px;">
+              <input type="radio" name="transport" value="Нужен трансфер туда и обратно" style="display: none;">
+              <div class="toggle-btn">Нужен трансфер</div>
+            </label>
+          </div>
+        </div>
+        <button type="submit">Отправить</button>
+      </form>
+      <small>Данные отправляются напрямую нам — конфиденциально и безопасно.</small>
+    </section>
+
+    <!-- Финал -->
+    <div style="text-align: center; margin: 40px 0; font-style: italic; color: #777; max-width: 600px; margin-left: auto; margin-right: auto;">
+      Свадьба — это не про идеальное событие, а про тёплую встречу самых родных людей.<br>
+      Спасибо, что вы с нами!
+    </div>
+    <footer>
+      <p>С любовью, Дмитрий и Юлия <i class="fas fa-heart" style="color:#d4558c;"></i><br>
+      До встречи 25.06.2026!</p>
+    </footer>
   </div>
-  <footer>
-    <p>С любовью, Дмитрий и Юлия <i class="fas fa-heart" style="color:#d4558c;"></i><br>
-    До встречи 25.06.2026!</p>
-  </footer>
 </div>
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
+    const coverWrapper = document.getElementById('coverWrapper');
+    const mainContent = document.getElementById('mainContent');
+    const openBtn = document.getElementById('openBtn');
+
+    openBtn.addEventListener('click', function () {
+      coverWrapper.style.opacity = '0';
+      coverWrapper.style.visibility = 'hidden';
+      setTimeout(() => {
+        mainContent.classList.add('active');
+        coverWrapper.remove();
+      }, 600);
+    });
+
+    // --- Логика RSVP и таймера ---
     const attendanceRadios = document.querySelectorAll('input[name="attendance"]');
     const transportRadios = document.querySelectorAll('input[name="transport"]');
     const transportSection = document.getElementById('transport-section');
