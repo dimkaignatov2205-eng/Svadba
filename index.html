@@ -4,23 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Дмитрий & Юлия — Приглашение на свадьбу</title>
-  <!-- Playfair Display для заголовков -->
+  <!-- Playfair Display -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <!-- Font Awesome для иконок -->
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <!-- EmailJS -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script type="text/javascript">
     (function() {
-      emailjs.init("uJrpRij57NBD3OKY"); // ← ВАЖНО: замените на ваш Public User ID!
+      emailjs.init("uJrpRij57NBD3OKY"); // ← ваш Public Key
     })();
   </script>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -35,7 +31,7 @@
       font-family: 'Playfair Display', Georgia, serif;
     }
 
-    /* === Обложка-письмо === */
+    /* === Обложка === */
     .cover-wrapper {
       position: fixed;
       top: 0;
@@ -66,7 +62,6 @@
       color: #8b4513;
       margin-bottom: 24px;
       font-weight: 600;
-      line-height: 1.4;
     }
 
     .cover p {
@@ -74,7 +69,6 @@
       color: #5a3a2e;
       font-style: italic;
       margin-bottom: 40px;
-      line-height: 1.5;
     }
 
     .seal {
@@ -88,23 +82,17 @@
       cursor: pointer;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       margin: 0 auto;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s;
     }
 
-    .seal:hover {
-      transform: scale(1.1);
-    }
-
-    .seal i {
-      color: white;
-      font-size: 1.8em;
-    }
+    .seal:hover { transform: scale(1.1); }
+    .seal i { color: white; font-size: 1.8em; }
 
     /* === Основной контент === */
     .main-content {
       opacity: 0;
       visibility: hidden;
-      transition: opacity 0.8s ease, visibility 0.8s;
+      transition: opacity 0.8s;
     }
 
     .main-content.active {
@@ -140,21 +128,14 @@
       margin: 30px 0 20px;
     }
 
-    h2 i {
-      margin-right: 8px;
-    }
+    h2 i { margin-right: 8px; }
 
-    p {
-      font-size: 1.2em;
-      margin: 15px 0;
-      color: #555;
-    }
+    p { font-size: 1.2em; margin: 15px 0; color: #555; }
 
     .text-left {
       text-align: left;
       max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
+      margin: 0 auto 30px;
     }
 
     .couple-photo {
@@ -177,7 +158,7 @@
       border-radius: 50px;
       font-weight: 600;
       font-size: 1.1em;
-      transition: all 0.3s ease;
+      transition: all 0.3s;
       border: none;
       cursor: pointer;
     }
@@ -240,14 +221,12 @@
     }
 
     .rsvp-form input,
-    .rsvp-form textarea,
     .rsvp-form button,
     .toggle-btn {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
-    .rsvp-form input,
-    .rsvp-form textarea {
+    .rsvp-form input {
       width: 100%;
       max-width: 400px;
       padding: 12px;
@@ -282,7 +261,7 @@
     @media (max-width: 768px) {
       .cover { padding: 30px 20px; }
       .cover h1 { font-size: 1.7em; }
-      .cover p { font-size: 1.05em; margin-bottom: 30px; }
+      .cover p { font-size: 1.05em; }
       .seal { width: 60px; height: 60px; }
       h1 { font-size: 2.2em; }
       h2 { font-size: 1.5em; }
@@ -319,12 +298,13 @@
 </head>
 <body>
 
-<!-- Обложка-письмо -->
+<!-- Обложка -->
 <div class="cover-wrapper" id="coverWrapper">
   <div class="cover">
     <h1>
-      Вам пришло приглашение на<br>
-      Свадьбу Дмитрия <i class="fas fa-heart" style="color:#d4558c;"></i> Юлии
+      Вам пришло приглашение<br>
+      на Свадьбу<br>
+      Дмитрия <i class="fas fa-heart" style="color:#d4558c; font-size:1em;"></i> Юлии
     </h1>
     <p>Откройте, чтобы узнать подробности...</p>
     <div class="seal" id="openBtn">
@@ -338,7 +318,8 @@
   <div class="container">
     <!-- Главная секция -->
     <section id="home">
-      <h1>Свадьба Дмитрия <i class="fas fa-heart heart"></i> Юлии</h1>
+      <h1>Мы женимся!<br>
+      Дмитрий <i class="fas fa-heart heart"></i> Юлия</h1>
       <p><strong>Дорогие родные и близкие!</strong><br>
       Приглашаем вас разделить радость особенного для нас события и стать частью начала семейной истории.</p>
       
@@ -418,7 +399,7 @@
       с тёплыми пожеланиями внутри.</p>
     </section>
 
-    <!-- Творческие выступления -->
+    <!-- Ведущий -->
     <section id="performance">
       <h2><i class="fas fa-masks-theater"></i> Творческие подарки</h2>
       <p>Мы будем рады вашим сюрпризам!<br>
@@ -476,7 +457,7 @@
     </section>
 
     <!-- Финал -->
-    <div style="text-align: center; margin: 40px 0; font-style: italic; color: #777; max-width: 600px; margin-left: auto; margin-right: auto;">
+    <div style="text-align: center; margin: 40px 0; font-style: italic; color: #777; max-width: 600px; margin: 40px auto;">
       Свадьба — это не про идеальное событие, а про тёплую встречу самых родных людей.<br>
       Спасибо, что вы с нами!
     </div>
@@ -501,7 +482,6 @@
       openBtn?.addEventListener('click', function () {
         localStorage.setItem('invitationOpened', 'true');
         coverWrapper.style.opacity = '0';
-        coverWrapper.style.visibility = 'hidden';
         setTimeout(() => {
           mainContent.classList.add('active');
           coverWrapper.remove();
@@ -509,7 +489,7 @@
       });
     }
 
-    // === Логика переключателей ===
+    // === Переключатели ===
     const attendanceRadios = document.querySelectorAll('input[name="attendance"]');
     const transportRadios = document.querySelectorAll('input[name="transport"]');
     const transportSection = document.getElementById('transport-section');
@@ -547,7 +527,7 @@
     updateToggleStyles('attendance');
     updateToggleStyles('transport');
 
-    // === Отправка формы через EmailJS ===
+    // === Отправка через EmailJS ===
     const form = document.getElementById('rsvp-form');
     if (form) {
       form.addEventListener('submit', function (e) {
