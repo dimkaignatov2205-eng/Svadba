@@ -5,9 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Дмитрий & Юлия — Приглашение на свадьбу</title>
   <!-- Playfair Display для заголовков -->
-  <link href=" https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap " rel="stylesheet">
-  <!-- Font Awesome для иконок вместо эмодзи -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome для иконок -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- EmailJS -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function() {
+      emailjs.init("uJrpRij57NBD3OKY"); // ← ВАЖНО: замените на ваш Public User ID!
+    })();
+  </script>
   <style>
     * {
       margin: 0;
@@ -17,7 +24,7 @@
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #FFB6C1; /* фон сайта — виден вокруг письма */
+      background-color: #FFB6C1;
       color: #333;
       line-height: 1.6;
       padding: 0;
@@ -28,7 +35,7 @@
       font-family: 'Playfair Display', Georgia, serif;
     }
 
-    /* === Обложка-письмо как компактная карточка === */
+    /* === Обложка-письмо === */
     .cover-wrapper {
       position: fixed;
       top: 0;
@@ -44,7 +51,7 @@
     }
 
     .cover {
-      background: #fff9f0; /* нежный пергамент */
+      background: #fff9f0;
       border: 1px solid #e8d5c9;
       border-radius: 16px;
       box-shadow: 0 10px 40px rgba(0,0,0,0.12);
@@ -52,7 +59,6 @@
       text-align: center;
       max-width: 560px;
       width: 90%;
-      position: relative;
     }
 
     .cover h1 {
@@ -94,7 +100,7 @@
       font-size: 1.8em;
     }
 
-    /* === Основной контент (скрыт до открытия) === */
+    /* === Основной контент === */
     .main-content {
       opacity: 0;
       visibility: hidden;
@@ -106,7 +112,6 @@
       visibility: visible;
     }
 
-    /* === Основной сайт === */
     .container {
       max-width: 800px;
       margin: 0 auto;
@@ -314,13 +319,12 @@
 </head>
 <body>
 
-<!-- Компактная обложка-письмо -->
+<!-- Обложка-письмо -->
 <div class="cover-wrapper" id="coverWrapper">
   <div class="cover">
     <h1>
-      Вам пришло приглашение<br>
-      на Свадьбу<br>
-      Дмитрия <i class="fas fa-heart" style="color:#d4558c; font-size:1em;"></i> Юлии
+      Вам пришло приглашение на<br>
+      Свадьбу Дмитрия <i class="fas fa-heart" style="color:#d4558c;"></i> Юлии
     </h1>
     <p>Откройте, чтобы узнать подробности...</p>
     <div class="seal" id="openBtn">
@@ -334,8 +338,7 @@
   <div class="container">
     <!-- Главная секция -->
     <section id="home">
-      <h1>Мы женимся!<br>
-      Дмитрий <i class="fas fa-heart heart"></i> Юлия</h1>
+      <h1>Свадьба Дмитрия <i class="fas fa-heart heart"></i> Юлии</h1>
       <p><strong>Дорогие родные и близкие!</strong><br>
       Приглашаем вас разделить радость особенного для нас события и стать частью начала семейной истории.</p>
       
@@ -374,30 +377,27 @@
       <h2><i class="fas fa-map-marker-alt"></i> Место проведения</h2>
       <img src="https://github.com/dimkaignatov2205-eng/Svadba/blob/main/Karta.jpg?raw=true" alt="Карта проезда" class="couple-photo">
       <p>Свадьба пройдёт в шатре <strong>"Дюна"</strong> на территории парка-отеля <strong>"Голицын Клуб"</strong>.<br>
-      <strong>Адрес:</strong> Московская область, Одинцовский район,<br>г.Голицыно, Минское шоссе, д.45</p>
+      <strong>Адрес:</strong> 143040, Московская область, Одинцовский район,<br>г. Голицыно, Минское шоссе, д. 45.</p>
       <a href="https://xn--90adpidcmf4c0a9c.xn--p1ai/" target="_blank" class="btn">Перейти на сайт отеля</a>
       <div class="map-container">
         <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A71613d6d7832a15f2a600c5d0a5dc8c993d51ef415e9b6d0648091b27d928147&amp;source=constructor" width="100%" height="100%" frameborder="0"></iframe>
       </div>
       <a href="https://yandex.ru/maps/?mode=routes&rtext=~55.598717,36.959728&rtt=auto" target="_blank" class="btn btn-secondary">Построить маршрут</a>
-      <p><strong><i class="fas fa-car"></i> Парковка:</strong> На территории.</p>
+      <p><strong><i class="fas fa-car"></i> Парковка:</strong> Бесплатная на территории.</p>
       <p><strong><i class="fas fa-bus"></i> Трансфер:</strong> По запросу.</p>
     </section>
 
     <!-- Дресс-код -->
     <section id="dresscode">
       <h2><i class="fas fa-user"></i> Dress code</h2>
-      <p>Будем рады, если вы поддержите стиль и цветовую гамму нашего торжества!</p>
+      <p>Будем рады, если вы поддержите цветовую гамму нашего торжества!</p>
       <img src="https://github.com/dimkaignatov2205-eng/Svadba/blob/main/Dresscode.jpg?raw=true" alt="Дресс-код" class="couple-photo">
-      <div style="text-align: center; margin: 40px 0; font-style: italic; color: #777; max-width: 600px; margin-left: auto; margin-right: auto;">
-      Образы для вдохновления представлены выше!
-      </div>
     </section>
 
     <!-- Программа дня -->
     <section id="program">
       <h2><i class="far fa-clock"></i> Тайминг мероприятия</h2>
-      <p><strong>Не опаздывайте — самое важное начнётся вовремя!</strong></p>
+      <p><strong>Не опаздывайте — самое важное начнётся ровно в срок!</strong></p>
       <div class="text-left">
         <p>
           <strong>15:00</strong> — Сбор гостей в зоне welcome.<br>
@@ -413,29 +413,27 @@
     <!-- Подарки -->
     <section id="gifts">
       <h2><i class="fas fa-book"></i> Пожелание</h2>
-      <p>Цветы радуют мгновение,<br> а книги остаются навсегда.<br>
+      <p>Цветы радуют мгновение, а книги остаются навсегда.<br>
       Вместо букета мы будем счастливы получить вашу любимую книгу<br>
       с тёплыми пожеланиями внутри.</p>
     </section>
 
     <!-- Творческие выступления -->
-  <section id="performance">
-    <h2><i class="fas fa-masks-theater"></i> Творческие подарки</h2>
-    <p>Мы будем рады вашим сюрпризам!<br>
-    Чтобы всё прошло идеально, пожалуйста, заранее свяжитесь с нашим ведущим:</p>
-  
-    <p>
-      <a href="https://t.me/Karimsharifullin" target="_blank" style="text-decoration: none; color: inherit;">
-        <strong>Карим Шарифуллин</strong>
-      </a><br>
-      <i class="fas fa-phone"></i> +7 (903) 274-84-16<br>
-      <a href="https://t.me/Karimsharifullin" target="_blank" style="color: #0088cc; text-decoration: underline; display: inline-flex; align-items: center; gap: 6px;">
-        <i class="fab fa-telegram"></i> @Karimsharifullin
-      </a>
-    </p>
-  
-    <p>Он включит вашу активность<br> в программу.</p>
-  </section>
+    <section id="performance">
+      <h2><i class="fas fa-masks-theater"></i> Творческие подарки</h2>
+      <p>Мы будем рады вашим сюрпризам!<br>
+      Чтобы всё прошло идеально, пожалуйста, заранее свяжитесь с нашим ведущим:</p>
+      <p>
+        <a href="https://t.me/Karimsharifullin" target="_blank" style="color: #d4558c; text-decoration: underline;">
+          <strong>Карим Шарифуллин</strong>
+        </a><br>
+        <i class="fas fa-phone"></i> +7 (903) 274-84-16<br>
+        <a href="https://t.me/Karimsharifullin" target="_blank" style="color: #0088cc; text-decoration: underline; display: inline-flex; align-items: center; gap: 6px;">
+          <i class="fab fa-telegram"></i> Написать в Telegram
+        </a>
+      </p>
+      <p>Он включит вашу активность в программу.</p>
+    </section>
 
     <!-- RSVP через EmailJS -->
     <section id="rsvp">
@@ -474,7 +472,7 @@
 
         <button type="submit">Отправить</button>
       </form>
-      <small>Данные отправляются напрямую нам — конфиденциально и безопасно.❤️</small>
+      <small>Ваш ответ пришлётся нам напрямую — спасибо! ❤️</small>
     </section>
 
     <!-- Финал -->
@@ -491,20 +489,27 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
+    // === Открытие обложки ===
     const coverWrapper = document.getElementById('coverWrapper');
     const mainContent = document.getElementById('mainContent');
     const openBtn = document.getElementById('openBtn');
 
-    openBtn.addEventListener('click', function () {
-      coverWrapper.style.opacity = '0';
-      coverWrapper.style.visibility = 'hidden';
-      setTimeout(() => {
-        mainContent.classList.add('active');
-        coverWrapper.remove();
-      }, 600);
-    });
+    if (localStorage.getItem('invitationOpened')) {
+      coverWrapper?.remove();
+      mainContent.classList.add('active');
+    } else {
+      openBtn?.addEventListener('click', function () {
+        localStorage.setItem('invitationOpened', 'true');
+        coverWrapper.style.opacity = '0';
+        coverWrapper.style.visibility = 'hidden';
+        setTimeout(() => {
+          mainContent.classList.add('active');
+          coverWrapper.remove();
+        }, 600);
+      });
+    }
 
-    // --- Логика RSVP и таймера ---
+    // === Логика переключателей ===
     const attendanceRadios = document.querySelectorAll('input[name="attendance"]');
     const transportRadios = document.querySelectorAll('input[name="transport"]');
     const transportSection = document.getElementById('transport-section');
@@ -525,13 +530,9 @@
         updateToggleStyles('attendance');
         if (this.value === 'Буду на свадьбе') {
           transportSection.style.display = 'block';
-          transportRadios[0].required = true;
         } else {
           transportSection.style.display = 'none';
-          transportRadios.forEach(tr => {
-            tr.checked = false;
-            tr.required = false;
-          });
+          transportRadios.forEach(tr => tr.checked = false);
           updateToggleStyles('transport');
         }
       });
@@ -546,7 +547,33 @@
     updateToggleStyles('attendance');
     updateToggleStyles('transport');
 
-    // Таймер
+    // === Отправка формы через EmailJS ===
+    const form = document.getElementById('rsvp-form');
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const formData = {
+          from_name: document.querySelector('input[name="from_name"]').value,
+          attendance: document.querySelector('input[name="attendance"]:checked')?.value || '',
+          transport: document.querySelector('input[name="transport"]:checked')?.value || ''
+        };
+
+        emailjs.send('service_lp59ean', 'template_u2rrt6c', formData)
+          .then(function () {
+            alert('Спасибо! Ваш ответ сохранён ❤️');
+            form.reset();
+            document.getElementById('transport-section').style.display = 'none';
+            updateToggleStyles('attendance');
+            updateToggleStyles('transport');
+          }, function (error) {
+            console.error('Ошибка:', error);
+            alert('Не удалось отправить. Попробуйте написать нам в Telegram.');
+          });
+      });
+    }
+
+    // === Таймер ===
     function updateCountdown() {
       const weddingDate = new Date("June 25, 2026 15:00:00").getTime();
       const now = new Date().getTime();
@@ -572,7 +599,7 @@
     const countdownInterval = setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    // Плавная прокрутка
+    // === Плавная прокрутка ===
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -584,18 +611,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
