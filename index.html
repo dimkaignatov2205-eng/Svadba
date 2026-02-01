@@ -437,46 +437,45 @@
     <p>Он включит вашу активность<br> в программу.</p>
   </section>
 
-    <!-- RSVP -->
-<!-- RSVP -->
-<section id="rsvp">
-  <h2>💌 Подтвердите своё присутствие</h2>
-  <p>Пожалуйста, дайте нам знать до <strong>01.04.2026</strong>, будете ли вы с нами в этот день.<br>
-  Вы можете заполнить форму ниже — или просто позвонить / написать нам лично!</p>
-  
-  <form class="rsvp-form" action="https://formsubmit.co/dimkaignatov@mail.ru" method="POST">
-    <input type="text" name="name" placeholder="Ваше имя и фамилия" required>
-    
-    <p style="margin: 30px 0 15px; font-weight: 600; color: #555;">Будете ли вы на свадьбе?</p>
-    <div class="toggle-group" style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-      <label style="flex: 1; min-width: 180px; max-width: 250px;">
-        <input type="radio" name="attendance" value="Буду на свадьбе" style="display: none;">
-        <div class="toggle-btn">Буду на свадьбе</div>
-      </label>
-      <label style="flex: 1; min-width: 180px; max-width: 250px;">
-        <input type="radio" name="attendance" value="Не смогу присутствовать" style="display: none;">
-        <div class="toggle-btn">Не смогу присутствовать</div>
-      </label>
-    </div>
+    <!-- RSVP через EmailJS -->
+    <section id="rsvp">
+      <h2><i class="fas fa-envelope"></i> Подтвердите своё присутствие</h2>
+      <p>Нам очень важно знать, разделите ли вы с нами этот особенный день.<br>
+      Пожалуйста, дайте ответ до <strong>1 апреля 2026 года</strong> — и скажите, понадобится ли вам трансфер.</p>
 
-    <div id="transport-section" style="display: none; margin-top: 30px;">
-      <p style="margin: 0 0 15px; font-weight: 600; color: #555;">Трансфер:</p>
-      <div class="toggle-group" style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-        <label style="flex: 1; min-width: 180px; max-width: 250px;">
-          <input type="radio" name="transport" value="Поеду сам" style="display: none;">
-          <div class="toggle-btn">Поеду сам</div>
-        </label>
-        <label style="flex: 1; min-width: 180px; max-width: 250px;">
-          <input type="radio" name="transport" value="Нужен трансфер туда и обратно" style="display: none;">
-          <div class="toggle-btn">Нужен трансфер</div>
-        </label>
-      </div>
-    </div>
+      <form id="rsvp-form" class="rsvp-form">
+        <input type="text" name="from_name" placeholder="Ваше имя и фамилия" required>
+        
+        <p style="margin: 30px 0 15px; font-weight: 600; color: #555;">Будете ли вы на свадьбе?</p>
+        <div class="toggle-group" style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+          <label style="flex: 1; min-width: 180px; max-width: 250px;">
+            <input type="radio" name="attendance" value="Буду на свадьбе" style="display: none;" required>
+            <div class="toggle-btn">Буду на свадьбе</div>
+          </label>
+          <label style="flex: 1; min-width: 180px; max-width: 250px;">
+            <input type="radio" name="attendance" value="Не смогу присутствовать" style="display: none;" required>
+            <div class="toggle-btn">Не смогу присутствовать</div>
+          </label>
+        </div>
 
-    <button type="submit">Отправить</button>
-  </form>
-  <small>Данные отправляются напрямую нам — конфиденциально и безопасно.</small>
-</section>
+        <div id="transport-section" style="display: none; margin-top: 30px;">
+          <p style="margin: 0 0 15px; font-weight: 600; color: #555;">Трансфер:</p>
+          <div class="toggle-group" style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+            <label style="flex: 1; min-width: 180px; max-width: 250px;">
+              <input type="radio" name="transport" value="Поеду сам" style="display: none;">
+              <div class="toggle-btn">Поеду сам</div>
+            </label>
+            <label style="flex: 1; min-width: 180px; max-width: 250px;">
+              <input type="radio" name="transport" value="Нужен трансфер туда и обратно" style="display: none;">
+              <div class="toggle-btn">Нужен трансфер</div>
+            </label>
+          </div>
+        </div>
+
+        <button type="submit">Отправить</button>
+      </form>
+      <small>Данные отправляются напрямую нам — конфиденциально и безопасно.❤️</small>
+    </section>
 
     <!-- Финал -->
     <div style="text-align: center; margin: 40px 0; font-style: italic; color: #777; max-width: 600px; margin-left: auto; margin-right: auto;">
@@ -585,6 +584,7 @@
 
 </body>
 </html>
+
 
 
 
