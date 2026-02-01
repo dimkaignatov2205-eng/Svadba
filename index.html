@@ -9,11 +9,9 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <!-- EmailJS -->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script type="text/javascript">
-    (function() {
-      emailjs.init("uJrpRij57NBD3OKY"); // ← ваш Public Key
-    })();
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    emailjs.init("uJrpRij57NBD3OKY");
   </script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -302,9 +300,8 @@
 <div class="cover-wrapper" id="coverWrapper">
   <div class="cover">
     <h1>
-      Вам пришло приглашение<br>
-      на Свадьбу<br>
-      Дмитрия <i class="fas fa-heart" style="color:#d4558c; font-size:1em;"></i> Юлии
+      Вам пришло приглашение на<br>
+      Свадьбу Дмитрия <i class="fas fa-heart" style="color:#d4558c;"></i> Юлии
     </h1>
     <p>Откройте, чтобы узнать подробности...</p>
     <div class="seal" id="openBtn">
@@ -318,8 +315,7 @@
   <div class="container">
     <!-- Главная секция -->
     <section id="home">
-      <h1>Мы женимся!<br>
-      Дмитрий <i class="fas fa-heart heart"></i> Юлия</h1>
+      <h1>Свадьба Дмитрия <i class="fas fa-heart heart"></i> Юлии</h1>
       <p><strong>Дорогие родные и близкие!</strong><br>
       Приглашаем вас разделить радость особенного для нас события и стать частью начала семейной истории.</p>
       
@@ -494,40 +490,33 @@
     const transportRadios = document.querySelectorAll('input[name="transport"]');
     const transportSection = document.getElementById('transport-section');
 
-    function updateToggleStyles(groupName) {
-      document.querySelectorAll(`input[name="${groupName}"]`).forEach(radio => {
-        const btn = radio.closest('label').querySelector('.toggle-btn');
-        if (radio.checked) {
-          btn.classList.add('active');
-        } else {
-          btn.classList.remove('active');
-        }
+    function updateToggleStyles() {
+      document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('input:checked').forEach(input => {
+        input.closest('label').querySelector('.toggle-btn').classList.add('active');
       });
     }
 
     attendanceRadios.forEach(radio => {
       radio.addEventListener('change', function () {
-        updateToggleStyles('attendance');
+        updateToggleStyles();
         if (this.value === 'Буду на свадьбе') {
           transportSection.style.display = 'block';
         } else {
           transportSection.style.display = 'none';
           transportRadios.forEach(tr => tr.checked = false);
-          updateToggleStyles('transport');
+          updateToggleStyles();
         }
       });
     });
 
     transportRadios.forEach(radio => {
-      radio.addEventListener('change', function () {
-        updateToggleStyles('transport');
-      });
+      radio.addEventListener('change', updateToggleStyles);
     });
 
-    updateToggleStyles('attendance');
-    updateToggleStyles('transport');
+    updateToggleStyles();
 
-    // === Отправка через EmailJS ===
+    // === Отправка формы через EmailJS ===
     const form = document.getElementById('rsvp-form');
     if (form) {
       form.addEventListener('submit', function (e) {
@@ -544,8 +533,7 @@
             alert('Спасибо! Ваш ответ сохранён ❤️');
             form.reset();
             document.getElementById('transport-section').style.display = 'none';
-            updateToggleStyles('attendance');
-            updateToggleStyles('transport');
+            updateToggleStyles();
           }, function (error) {
             console.error('Ошибка:', error);
             alert('Не удалось отправить. Попробуйте написать нам в Telegram.');
