@@ -438,42 +438,44 @@
   </section>
 
     <!-- RSVP -->
-   <!-- Подтверждение участия — через личные контакты -->
+<!-- RSVP -->
 <section id="rsvp">
-  <h2><i class="fas fa-envelope"></i> Подтвердите своё присутствие</h2>
-   <p>Нам очень важно знать, разделите ли вы с нами этот особенный день.<br>
-  Пожалуйста, дайте ответ до <br>
-     <strong>1 апреля 2026 года</strong><br>
-     и скажите, понадобится ли вам трансфер.</p>
-
-  <div style="display: flex; flex-direction: column; align-items: center; gap: 24px; margin: 30px 0;">
-    <!-- Дмитрий -->
-    <div style="text-align: center; max-width: 320px;">
-      <p><strong>Дмитрий</strong></p>
-      <a href="https://t.me/Ditelg" target="_blank" class="btn" style="padding: 12px 28px; font-size: 1em; display: inline-flex; align-items: center; gap: 8px;">
-        <i class="fab fa-telegram"></i> Написать
-      </a>
-      <br>
-      <a href="tel:+79857834686" style="color: #d4558c; text-decoration: underline; margin-top: 10px; display: inline-block;">
-        📞 +7 (985) 783-46-86
-      </a>
+  <h2>💌 Подтвердите своё присутствие</h2>
+  <p>Пожалуйста, дайте нам знать до <strong>01.04.2026</strong>, будете ли вы с нами в этот день.<br>
+  Вы можете заполнить форму ниже — или просто позвонить / написать нам лично!</p>
+  
+  <form class="rsvp-form" action="https://formsubmit.co/dimkaignatov@mail.ru" method="POST">
+    <input type="text" name="name" placeholder="Ваше имя и фамилия" required>
+    
+    <p style="margin: 30px 0 15px; font-weight: 600; color: #555;">Будете ли вы на свадьбе?</p>
+    <div class="toggle-group" style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+      <label style="flex: 1; min-width: 180px; max-width: 250px;">
+        <input type="radio" name="attendance" value="Буду на свадьбе" style="display: none;">
+        <div class="toggle-btn">Буду на свадьбе</div>
+      </label>
+      <label style="flex: 1; min-width: 180px; max-width: 250px;">
+        <input type="radio" name="attendance" value="Не смогу присутствовать" style="display: none;">
+        <div class="toggle-btn">Не смогу присутствовать</div>
+      </label>
     </div>
 
-    <!-- Юлия -->
-    <div style="text-align: center; max-width: 320px;">
-      <p><strong>Юлия</strong></p>
-      <a href="https://t.me/Djin_ton" target="_blank" class="btn btn-secondary" style="padding: 12px 28px; font-size: 1em; display: inline-flex; align-items: center; gap: 8px;">
-        <i class="fab fa-telegram"></i> Написать
-      </a>
+    <div id="transport-section" style="display: none; margin-top: 30px;">
+      <p style="margin: 0 0 15px; font-weight: 600; color: #555;">Трансфер:</p>
+      <div class="toggle-group" style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+        <label style="flex: 1; min-width: 180px; max-width: 250px;">
+          <input type="radio" name="transport" value="Поеду сам" style="display: none;">
+          <div class="toggle-btn">Поеду сам</div>
+        </label>
+        <label style="flex: 1; min-width: 180px; max-width: 250px;">
+          <input type="radio" name="transport" value="Нужен трансфер туда и обратно" style="display: none;">
+          <div class="toggle-btn">Нужен трансфер</div>
+        </label>
+      </div>
     </div>
-  </div>
 
-  <p style="font-size: 0.95em; color: #777; max-width: 500px; margin: 20px auto 0;">
-    Просто напишите:<br>
-    «Буду!» «Трансфер нужен»<br>
-    или<br>
-    «К сожалению, не получится» «Трансфер не нужен» ❤️
-  </p>
+    <button type="submit">Отправить</button>
+  </form>
+  <small>Данные отправляются напрямую нам — конфиденциально и безопасно.</small>
 </section>
 
     <!-- Финал -->
@@ -583,6 +585,7 @@
 
 </body>
 </html>
+
 
 
 
